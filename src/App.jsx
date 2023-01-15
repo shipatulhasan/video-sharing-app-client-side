@@ -1,10 +1,13 @@
+import { Toaster } from "react-hot-toast"
+import { RouterProvider } from "react-router-dom"
+import {router} from './Routes/Router'
+
 function App() {
 
   return (
     <>
-    <h2 className="text-center font-bold text-red-400">
-      Video-sharing website
-    </h2>
+    <RouterProvider router={router} />
+      <Toaster />
     </>
   )
 }
