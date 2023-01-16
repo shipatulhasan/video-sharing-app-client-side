@@ -1,4 +1,5 @@
 import React from "react";
+import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({product}) => {
@@ -31,13 +32,17 @@ const ProductCard = ({product}) => {
           }
         </p>
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm text-red-400 font-bold">
-            10 Likes || 2 Comments
-          </p>
+        <p className='flex text-red-400'>
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </p>
 
           <div className="inline-block  ">
             <Link to={`/product/${_id}`}>
-              <p className="viewCard-button text-sm text-red-400 font-semibold capitalize">
+              <p className="viewCard-button text-sm text-red-400 font-semibold capitalize hover:text-white">
                 View Details
               </p>
             </Link>

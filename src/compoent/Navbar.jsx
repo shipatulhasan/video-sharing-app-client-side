@@ -20,6 +20,17 @@ const Navbar = () => {
     <>
       {user?.uid ? (
         <>
+          <NavLink to="/shop">
+            {({ isActive }) => (
+              <li
+                className={`${
+                  isActive ? "text-red-500" : "text-black"
+                } hover:text-red-500 px-2 rounded transition-colors duration-150 ease-linear list-none`}
+              >
+                Shop
+              </li>
+            )}
+          </NavLink>
           <NavLink to="/add-product">
             {({ isActive }) => (
               <li

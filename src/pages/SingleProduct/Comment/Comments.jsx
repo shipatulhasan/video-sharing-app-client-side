@@ -10,7 +10,7 @@ const Comments = ({review,index}) => {
         <div className='flex justify-between items-center'>
         <div className="flex">
           <div
-            className="w-12 h-12 mr-4 rounded-full shadow bg-red-500 grid place-content-center font-bold text-2xl text-white ">
+            className="w-12 h-12 mr-4 rounded-full shadow bg-red-400 grid place-content-center font-bold text-2xl text-white uppercase ">
                 {user?.split('')[0]}
               </div>
           <div className="flex flex-col justify-center">
@@ -27,7 +27,7 @@ const Comments = ({review,index}) => {
         <p className="text-sm tracking-wide text-black">
               {comment}
             </p>
-            <p className='py-5 flex text-red-500'>
+            <p className='py-3 flex text-red-400'>
               <FaStar />
               <FaStar />
               <FaStar />
