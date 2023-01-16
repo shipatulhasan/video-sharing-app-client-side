@@ -6,13 +6,14 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
-  const [isAdmin,setIsAdmin] = useState(false)
+  const [admin,setIsAdmin] = useState(false)
 
   const { user, logOut } = useContext(AuthContext);
 
   useEffect(()=>{
     axios.get(`/user/${user?.email}`)
     .then(res=>{
+      console.log(res?.data)
       if(res?.data.isAdmin){
         setIsAdmin(true)
       }
@@ -44,7 +45,7 @@ const Navbar = () => {
             )}
           </NavLink>
           {
-            isAdmin &&<NavLink to="/add-product">
+            admin &&<NavLink to="/add-product">
             {({ isActive }) => (
               <li
                 className={`${
@@ -98,7 +99,7 @@ const Navbar = () => {
               <button
                 onClick={() => setOpen(!isOpen)}
                 type="button"
-                className="text-red-400 text-xl dark:text-gray-200 hover:text-red-600 dark:hover:text-gray-400 focus:outline-none focus:text-red-600 dark:focus:text-slate-200"
+                className="text-red-500 text-xl dark:text-gray-200 hover:text-red-600 dark:hover:text-gray-400 focus:outline-none focus:text-red-600 dark:focus:text-slate-200"
                 aria-label="toggle menu"
               >
                 {!isOpen ? (

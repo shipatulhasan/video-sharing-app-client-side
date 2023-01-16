@@ -59,9 +59,9 @@ const Footer = () => {
             Social
           </span>
           <div className="flex items-center gap-4 pt-2 text-white">
-           <div className="h-7 w-7 rounded-full bg-red-400 grid place-content-center "><FaFacebookF /></div> 
-           <div className="h-7 w-7 rounded-full bg-red-400 grid place-content-center "><FaTwitter /></div> 
-           <div className="h-7 w-7 rounded-full bg-red-400 grid place-content-center "><FaLinkedinIn /></div> 
+           <div className="h-7 w-7 rounded-full bg-red-500 grid place-content-center "><FaFacebookF /></div> 
+           <div className="h-7 w-7 rounded-full bg-red-500 grid place-content-center "><FaTwitter /></div> 
+           <div className="h-7 w-7 rounded-full bg-red-500 grid place-content-center "><FaLinkedinIn /></div> 
           </div>
           <p className="mt-4 text-xs text-slate-200">
           Haat Bazaar is the country's largest online product selling website. You can buy all the latest products from here at relatively low cost.

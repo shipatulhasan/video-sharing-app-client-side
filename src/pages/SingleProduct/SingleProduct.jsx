@@ -30,7 +30,7 @@ const SingleProduct = () => {
 
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-4 space-y-5 md:space-y-0 md:gap-4 py-20'>
+        <div className='grid grid-cols-1 md:grid-cols-4 space-y-5 md:space-y-0 md:gap-4 py-10'>
         <div className="col-span-3">
 
        {

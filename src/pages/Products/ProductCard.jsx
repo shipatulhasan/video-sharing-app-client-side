@@ -14,7 +14,7 @@ const ProductCard = ({product}) => {
       </div>
 
       <div className="-mt-11 bg-[#353535] relative z-20 ml-5 flex items-center gap-3">
-        <div className="bg-red-400 p-2">
+        <div className="bg-red-500 p-2">
           <p className="text-white text-lg">$20</p>
         </div>
         <p
@@ -32,7 +32,7 @@ const ProductCard = ({product}) => {
           }
         </p>
         <div className="flex items-center justify-between gap-3">
-        <p className='flex text-red-400'>
+        <p className='flex text-red-500'>
               <FaStar />
               <FaStar />
               <FaStar />
@@ -42,7 +42,7 @@ const ProductCard = ({product}) => {
 
           <div className="inline-block  ">
             <Link to={`/product/${_id}`}>
-              <p className="viewCard-button text-sm text-red-400 font-semibold capitalize hover:text-white">
+              <p className="viewCard-button text-xs bg-red-500 px-4 py-1 text-white  hover:text-red-500 hover:bg-slate-200">
                 View Details
               </p>
             </Link>

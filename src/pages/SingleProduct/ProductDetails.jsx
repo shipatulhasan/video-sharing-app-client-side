@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GoComment } from "react-icons/go";
-import { BsHandThumbsUp } from "react-icons/bs"
+import { BsHandThumbsUp,BsHandThumbsUpFill } from "react-icons/bs"
 import {FaFacebookF,FaTwitter,FaLinkedinIn} from 'react-icons/fa'
 import CommentForm from "./Comment/CommentForm";
 import Comments from "./Comment/Comments";
@@ -11,12 +11,14 @@ const ProductDetails = ({ product }) => {
   const [reviews,setRviews] = useState([])
   const {user} = useContext(AuthContext)
   const [update,setUpdate] = useState(false)
+  const [likes,setLikes] = useState([])
+  const [isLiked,setIsLiked] = useState(false)
   const [isLoading,setIsLoading] = useState(false)
   const {_id,title,video,description} = product
 
 
   useEffect(()=>{
-    axios.get(`/comments`)
+    axios.get(`/comments/${_id}`)
     .then(res=>{
         setRviews(res.data)
       
@@ -25,7 +27,24 @@ const ProductDetails = ({ product }) => {
      
         console.error(err)
     })
+    axios.get(`/likes/${_id}`)
+    .then(res=>{
+      setLikes(res.data)
+      const existing = res.data.find(likedUser=>likedUser.user===user.email)
+      if(existing){
+        setIsLiked(true)
+      }
+      
+    })
+    .catch(err=>{
+     
+        console.error(err)
+    })
+  
+
 },[update])
+
+
   // handle comment submission
   const handleComment = (event)=>{
     event.preventDefault()
@@ -42,7 +61,6 @@ const ProductDetails = ({ product }) => {
     }
     axios.post('/comment',comment)
     .then(res=>{ 
-        console.log(res.data)
         setUpdate(!update)
         event.target.reset()
         setIsLoading(false)
@@ -54,7 +72,26 @@ const ProductDetails = ({ product }) => {
     })
 }
 
+// handle likes
 
+const handleLikes = ()=>{
+  const like = {
+    user:user.email,
+    status:true,
+    productId:_id
+  }
+  const existing = likes.find(likedUser=>likedUser.user===user.email)
+if(existing){
+  setIsLiked(true)
+  return
+}
+  axios.post('/like',like)
+  .then(res=>{ 
+    setUpdate(!update)
+    setIsLiked(true)
+  })
+  .catch(error=>console.error(error.response))
+}
 
 
 
@@ -73,13 +110,16 @@ const ProductDetails = ({ product }) => {
       
             </div>
             <div className="py-3">
-              <p className="flex items-center gap-4">
-                <span className="flex items-center gap-1">
-                  <BsHandThumbsUp />
-                  <sup>20</sup>
+              <p className="flex items-center gap-4 ">
+                <span onClick={handleLikes} className={`flex items-center gap-1 text-red-500 hover:cursor-pointer ${isLiked&&'pointer-events-none'}`}>
+                  {
+                    isLiked ? <BsHandThumbsUpFill /> : <BsHandThumbsUp />
+                  }
+                  
+                  <sup>{likes?.length?likes.length:0}</sup>
                 </span>
                 ||{" "}
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1 text-red-500">
                   <GoComment />
                   <sup>{reviews?.length?reviews.length:0}</sup>
                 </span>
@@ -88,9 +128,9 @@ const ProductDetails = ({ product }) => {
             <p className="mb-5 text-gray-800">{description}</p>
           </div>
           <div className="flex items-center gap-4 pt-2 text-white">
-           <div className="h-9 w-9 rounded-full bg-red-400 grid place-content-center "><FaFacebookF /></div> 
-           <div className="h-9 w-9 rounded-full bg-red-400 grid place-content-center "><FaTwitter /></div> 
-           <div className="h-9 w-9 rounded-full bg-red-400 grid place-content-center "><FaLinkedinIn /></div> 
+           <div className="h-9 w-9 rounded-full bg-red-500 grid place-content-center "><FaFacebookF /></div> 
+           <div className="h-9 w-9 rounded-full bg-red-500 grid place-content-center "><FaTwitter /></div> 
+           <div className="h-9 w-9 rounded-full bg-red-500 grid place-content-center "><FaLinkedinIn /></div> 
           </div>
           {/* comment box */}
 

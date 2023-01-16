@@ -8,7 +8,7 @@ const CommentForm = ({handleComment,isLoading}) => {
         </div>
        <div className='flex justify-end'>
           
-       <button className='border-2 border-khaki px-8 py-2 text-white font-bold tracking-widest uppercase text-xs mt-6 bg-red-400  hover:bg-khaki '>
+       <button className='border-2 border-khaki px-8 py-2 text-white font-bold tracking-widest uppercase text-xs mt-6 bg-red-500  hover:bg-khaki '>
        {
                isLoading ? 'processing...' : 'Comment'
            } 
