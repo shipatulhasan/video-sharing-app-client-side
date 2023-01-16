@@ -9,7 +9,8 @@ import ProductSkeleton from './ProductSkeleton';
 const SingleProduct = () => {
     const [product,setProduct] = useState({})
     const [isLoading,setIsLoading] = useState(true)
-    const [comments,setComments] = useState([])
+    const [reviews,setRviews] = useState([])
+    const [update,setUpdate] = useState(false)
     const {user} = useContext(AuthContext)
     const {id} = useParams()
     useEffect(()=>{
@@ -25,21 +26,34 @@ const SingleProduct = () => {
     },[])
 
     useEffect(()=>{
-
-    },[])
+        axios.get(`/comments`)
+        .then(res=>{
+            setRviews(res.data)
+          
+        })
+        .catch(err=>{
+         
+            console.error(err)
+        })
+    },[update])
 
 // handle comment submission
     const handleComment = (event)=>{
         event.preventDefault()
         const text = event.target.comment.value
+        const date = new Date()
+        const commentTime = date.toLocaleString()
         const comment = {
-            user:user.email,
+            userEmail:user.email,
+            user:user.displayName,
             comment:text,
-            productId:id
+            productId:id,
+            date:commentTime
         }
         axios.post('/comment',comment)
         .then(res=>{ 
             console.log(res.data)
+            setUpdate(!update)
             event.target.reset()
         })
         .catch(error=>console.error(error.response))
@@ -52,7 +66,7 @@ const SingleProduct = () => {
         <div className="col-span-3">
 
        {
-           isLoading ?<ProductSkeleton /> :<ProductDetails handleComment={handleComment} product={product} />
+           isLoading ?<ProductSkeleton /> :<ProductDetails handleComment={handleComment} product={product} reviews={reviews} />
        }
        
         </div>

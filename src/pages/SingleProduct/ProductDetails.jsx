@@ -3,8 +3,9 @@ import { GoComment } from "react-icons/go";
 import { BsHandThumbsUp } from "react-icons/bs"
 import {FaFacebookF,FaTwitter,FaLinkedinIn} from 'react-icons/fa'
 import CommentForm from "./Comment/CommentForm";
+import Comments from "./Comment/Comments";
 
-const ProductDetails = ({ product,handleComment }) => {
+const ProductDetails = ({ product,handleComment,reviews }) => {
   const {_id,title,video,description} = product
   return (
     <div className="px-4 sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-8">
@@ -43,6 +44,14 @@ const ProductDetails = ({ product,handleComment }) => {
           {/* comment box */}
 
           <CommentForm handleComment={handleComment}/>
+          {/* show comments */}
+
+          <div className="py-3">
+          {
+                    reviews.map((review,i)=><Comments key={review._id} review={review} index={i===reviews.length-1} />)
+                }
+          </div>
+         
 
         </div>
       </div>
