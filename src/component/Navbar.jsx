@@ -3,23 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useRole from "../Hooks/useRole";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
-  const [admin,setIsAdmin] = useState(false)
 
   const { user, logOut } = useContext(AuthContext);
-
-  useEffect(()=>{
-    axios.get(`/user/${user?.email}`)
-    .then(res=>{
-      // console.log(res?.data)
-      if(res?.data.isAdmin){
-        setIsAdmin(true)
-      }
-    })
-    .catch(err=>{})
-  },[])
+  const {admin} = useRole(user?.email)
 
   const handlelogOut = () => {
     logOut()

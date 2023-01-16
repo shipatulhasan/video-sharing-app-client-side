@@ -5,6 +5,7 @@ import Login from "../pages/Forms/Login";
 import Signup from "../pages/Forms/Signup";
 import Products from "../pages/Products/Products";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
     
       {
         path: "/add-product",
-        element: <ProductForm />,
+        element: <AdminRoute><ProductForm /></AdminRoute>,
       }
     ]
   },
