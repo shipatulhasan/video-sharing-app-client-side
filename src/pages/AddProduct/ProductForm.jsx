@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 
 const ProductForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const url = "https://api.cloudinary.com/v1_1/dlraeenlx/auto/upload";
-  const upload_preset = "lwffo1cw";
+  const url = import.meta.env.VITE_cloudinary_url;
+  const upload_preset = import.meta.env.VITE_upload_preset;
   const handleProduct = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -100,7 +100,7 @@ const ProductForm = () => {
                 className="focus:ring-2 focus:ring-offset-2 focus:ring-slate-100 text-base font-semibold leading-none text-white focus:outline-none bg-red-500 border rounded hover:bg-red-600 py-4 w-full"
                 type="submit"
               >
-                {isLoading ? "loading..." : "Add product"}
+                {isLoading ? "processing..." : "Add product"}
               </button>
             </div>
           </form>
