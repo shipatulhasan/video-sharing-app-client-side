@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 const ProductForm = () => {
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const url = "https://api.cloudinary.com/v1_1/dlraeenlx/auto/upload";
   const upload_preset = "lwffo1cw";
@@ -55,13 +54,12 @@ const ProductForm = () => {
       <div className="flex flex-col items-center justify-center min-h-[80vh]">
         <div className="bg-white border border-slate-400 shadow-xl rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-6">
           <p
-            aria-label="Login to your account"
-            className="text-2xl font-extrabold leading-6 text-gray-800"
+       
+            className="text-2xl font-extrabold leading-6 text-gray-800 pb-5"
           >
             Upload product
           </p>
           <form action="" onSubmit={handleProduct} className="space-y-5">
-            <p className="text-base font-medium mb-5 text-red-600">{error}</p>
             <div>
               <label className="text-sm text-gray-600">
                 Title

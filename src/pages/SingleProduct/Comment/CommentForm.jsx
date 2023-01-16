@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CommentForm = ({handleSubmit,isLoading}) => {
+const CommentForm = ({handleComment,isLoading}) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleComment}>
         <div className='border border-slate-300'>
-        <textarea className='p-5 w-full focus:outline-none' name="comment" rows='5' placeholder='write your review....' ></textarea>
+        <textarea className='p-5 w-full focus:outline-none' name="comment" rows='5' placeholder='Write your comment....' ></textarea>
         </div>
        <div className='flex justify-end'>
           

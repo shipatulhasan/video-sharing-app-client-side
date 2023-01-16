@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
+import {AuthContext} from '../../AuthProvider/AuthProvider'
 import ProductSidebar from './ProductSidebar';
 import ProductSkeleton from './ProductSkeleton';
 
 const SingleProduct = () => {
     const [product,setProduct] = useState({})
     const [isLoading,setIsLoading] = useState(true)
+    const [comments,setComments] = useState([])
+    const {user} = useContext(AuthContext)
     const {id} = useParams()
     useEffect(()=>{
         axios.get(`/product/${id}`)
@@ -21,9 +24,25 @@ const SingleProduct = () => {
         })
     },[])
 
+    useEffect(()=>{
 
-    const handleSubmit = (e)=>{
-        e.preventDefault()
+    },[])
+
+// handle comment submission
+    const handleComment = (event)=>{
+        event.preventDefault()
+        const text = event.target.comment.value
+        const comment = {
+            user:user.email,
+            comment:text,
+            productId:id
+        }
+        axios.post('/comment',comment)
+        .then(res=>{ 
+            console.log(res.data)
+            event.target.reset()
+        })
+        .catch(error=>console.error(error.response))
     }
 
 
@@ -33,7 +52,7 @@ const SingleProduct = () => {
         <div className="col-span-3">
 
        {
-           isLoading ?<ProductSkeleton /> :<ProductDetails handleSubmit={handleSubmit} product={product} />
+           isLoading ?<ProductSkeleton /> :<ProductDetails handleComment={handleComment} product={product} />
        }
        
         </div>

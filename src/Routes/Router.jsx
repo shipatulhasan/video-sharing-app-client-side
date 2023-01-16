@@ -1,23 +1,42 @@
 import { createBrowserRouter } from "react-router-dom";
-import ProductForm from "../compoent/ProductForm";
+import Main from "../Layouts/Main";
+import ProductForm from "../pages/AddProduct/ProductForm";
+import Login from "../pages/Forms/Login";
+import Signup from "../pages/Forms/Signup";
 import Products from "../pages/Products/Products";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Products />,
-  },
-  {
-    path: "/products",
-    element: <Products />,
-  },
-  {
-    path: "/product/:id",
-    element: <SingleProduct />,
-  },
 
+    element: <Main />,
+    children:[
+      {
+        path: "/",
+        element: <Products />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
+      },
+      {
+        path: "/product/:id",
+        element: <SingleProduct />,
+      },
+    
+      {
+        path: "/add-product",
+        element: <ProductForm />,
+      }
+    ]
+  },
+  
   {
-    path: "/add-product",
-    element: <ProductForm />,
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
 ]);

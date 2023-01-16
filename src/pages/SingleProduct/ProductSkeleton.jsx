@@ -5,9 +5,9 @@ const ProductSkeleton = () => {
     return (
         <div className="px-4 sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-8">
       <div className="flex flex-col max-w-screen-lg overflow-hidden ">
-          <Skeleton />
+         
         <div className="lg:pl-10 space-y-5 ">
-        <div className="w-full h-56 mb-6 md:h-64 xl:h-72">
+        <div className="w-full h-56 mb-6 md:h-96">
            <Skeleton style={{height:'100%'}} />
        </div>
           <div>
@@ -25,13 +25,12 @@ const ProductSkeleton = () => {
             
           </div>
           <div className="flex items-center gap-4 pt-2">
-           <Skeleton circle width={100} />
-           <Skeleton circle width={100} />
-           <Skeleton circle width={100} />
+           <Skeleton circle width={40} height={40} />
+           <Skeleton circle width={40} height={40} />
+           <Skeleton circle width={40} height={40} />
        
           </div>
         </div>
-        <div className="my-10 lg:ml-10 w-full h-[1px] bg-khaki" />
       </div>
     </div>
     );
