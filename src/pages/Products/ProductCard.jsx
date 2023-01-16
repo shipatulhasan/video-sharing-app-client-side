@@ -37,8 +37,8 @@ const ProductCard = () => {
 
           <div className="inline-block  ">
             <Link to={`/product/01`}>
-              <p className="viewCard-button text-sm text-red-400 font-semibold uppercase">
-                view more
+              <p className="viewCard-button text-sm text-red-400 font-semibold capitalize">
+                View Details
               </p>
             </Link>
           </div>
