@@ -14,7 +14,7 @@ const Footer = () => {
                 to="/"
               >
                 <h2>
-                  Hat<span className="text-red-700">Bazar</span>
+                  Hat<span className="text-red-500">Bazar</span>
                 </h2>
               </Link>
             </div>

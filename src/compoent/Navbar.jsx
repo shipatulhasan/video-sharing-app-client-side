@@ -1,12 +1,24 @@
-import React, { useContext, useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
+  const [isAdmin,setIsAdmin] = useState(false)
 
   const { user, logOut } = useContext(AuthContext);
+
+  useEffect(()=>{
+    axios.get(`/user/${user?.email}`)
+    .then(res=>{
+      if(res?.data.isAdmin){
+        setIsAdmin(true)
+      }
+    })
+    .catch(err=>{})
+  },[])
 
   const handlelogOut = () => {
     logOut()
@@ -31,7 +43,8 @@ const Navbar = () => {
               </li>
             )}
           </NavLink>
-          <NavLink to="/add-product">
+          {
+            isAdmin &&<NavLink to="/add-product">
             {({ isActive }) => (
               <li
                 className={`${
@@ -42,6 +55,8 @@ const Navbar = () => {
               </li>
             )}
           </NavLink>
+          }
+          
           <li
             onClick={handlelogOut}
             className="text-black hover:text-red-500 hover:cursor-pointer  list-none"
@@ -67,16 +82,16 @@ const Navbar = () => {
       <div className="container px-6 py-4 mx-auto rounded">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-semibold text-gray-700 ">
+            
               <Link
-                className="text-2xl font-bold text-black transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                className="text-2xl font-bold text-black transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300 hover:cursor-pointer"
                 to="/"
               >
                 <h2>
-                  Hat<span className="text-red-600">Bazar</span>
+                  Hat<span className="text-red-500">Bazar</span>
                 </h2>
               </Link>
-            </div>
+          
 
             {/* <!-- Mobile menu button --> */}
             <div className="flex lg:hidden">

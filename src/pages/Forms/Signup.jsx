@@ -47,8 +47,16 @@ const Signup = () => {
 
   return (
     <div className="h-full w-full py-5 px-4">
-      <div className="flex flex-col items-center justify-center min-h-[80vh]">
+      <div className="flex flex-col items-center justify-center min-h-[80vh] md:min-h-[93vh]">
         <div className="bg-white border border-slate-400 shadow-xl rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-6">
+        <div
+                className="text-2xl font-bold text-black transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300 pb-3"
+                to="/"
+              >
+                <h2>
+                  Hat<span className="text-red-500">Bazar</span>
+                </h2>
+              </div>
           <p className="text-2xl font-extrabold leading-6 text-gray-800 ">
             Sign Up
           </p>

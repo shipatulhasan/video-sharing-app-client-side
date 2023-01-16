@@ -5,11 +5,11 @@ import Login from "../pages/Forms/Login";
 import Signup from "../pages/Forms/Signup";
 import Products from "../pages/Products/Products";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
+import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
-
-    element: <Main />,
+    element: <PrivateRoute><Main /></PrivateRoute>,
     children:[
       {
         path: "/",
