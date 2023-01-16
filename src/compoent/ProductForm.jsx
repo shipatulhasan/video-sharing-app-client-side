@@ -68,17 +68,20 @@ const ProductForm = () => {
                 <input
                   type="text"
                   name="title"
-                  placeholder="lenovo"
+                  placeholder="Drone"
+                  required
                   className="border border-slate-400 rounded focus:outline-none text-sm font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 />
               </label>
             </div>
-            <div className="mt-6  w-full">
+            <div className="mt-6 w-full">
               <input
                 className="px-4 py-3 text-gray-800 border rounded"
                 type="file"
                 // multiple={true}
                 name="video"
+                accept="video/*"
+                required
               />
             </div>
 
@@ -90,6 +93,7 @@ const ProductForm = () => {
               <textarea
                 id="description"
                 name="description"
+                required
                 className="block border border-slate-400 rounded focus:green-300 w-full h-20 px-4 py-3 text-gray-800 focus:outline-red-500 "
               ></textarea>
             </div>
