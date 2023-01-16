@@ -13,7 +13,7 @@ const Navbar = () => {
   useEffect(()=>{
     axios.get(`/user/${user?.email}`)
     .then(res=>{
-      console.log(res?.data)
+      // console.log(res?.data)
       if(res?.data.isAdmin){
         setIsAdmin(true)
       }
@@ -38,7 +38,7 @@ const Navbar = () => {
               <li
                 className={`${
                   isActive ? "text-red-500" : "text-black"
-                } hover:text-red-500 px-2 rounded transition-colors duration-150 ease-linear list-none`}
+                } hover:text-red-500 rounded transition-colors duration-150 ease-linear list-none`}
               >
                 Shop
               </li>
@@ -50,7 +50,7 @@ const Navbar = () => {
               <li
                 className={`${
                   isActive ? "text-red-500" : "text-black"
-                } hover:text-red-500 px-2 rounded transition-colors duration-150 ease-linear list-none`}
+                } hover:text-red-500  rounded transition-colors duration-150 ease-linear list-none`}
               >
                 Add Product
               </li>

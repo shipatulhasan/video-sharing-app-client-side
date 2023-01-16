@@ -3,19 +3,12 @@ import React, { useEffect, useState } from "react";
 import CardSkeleton from "./CardSkeleton";
 import ProductCard from "./ProductCard";
 import img from '../../assets/banner.jpg'
+import useProducts from "../../Hooks/useProducts";
 
 const Products = () => {
-  const [products,setProducts] = useState([])
-  const [isLoading,setIsLoading] = useState(true)
-  useEffect(()=>{
-    axios.get('/product')
-    .then(res=>{
-      setIsLoading(false)
-      console.log(res.data)
-      setProducts(res.data)
-    })
-    .catch(err=>console.error(err.response))
-  },[])
+  
+  const {products,isLoading} = useProducts()
+
 
   return (
       <>

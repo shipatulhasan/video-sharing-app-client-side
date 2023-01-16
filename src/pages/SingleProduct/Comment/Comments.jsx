@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 const Comments = ({review,index}) => {
     const {user,comment,date} = review
     return (
-        <div className={`${index ? 'border-none' : 'border-b'} border-slate-400 pt-10 pb-0 mx-5 dark:text-white`}>
+        <div className={`${index ? 'border-none' : 'border-b'} border-slate-400 py-5 md:mx-5 dark:text-white`}>
         
 
         <div className='flex justify-between items-center'>

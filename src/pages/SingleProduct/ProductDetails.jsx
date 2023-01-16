@@ -31,8 +31,12 @@ const ProductDetails = ({ product }) => {
     .then(res=>{
       setLikes(res.data)
       const existing = res.data.find(likedUser=>likedUser.user===user.email)
+      // console.log(existing)
       if(existing){
         setIsLiked(true)
+      }
+      else{
+        setIsLiked(false)
       }
       
     })
@@ -42,7 +46,7 @@ const ProductDetails = ({ product }) => {
     })
   
 
-},[update])
+},[_id,update])
 
 
   // handle comment submission
@@ -81,10 +85,9 @@ const handleLikes = ()=>{
     productId:_id
   }
   const existing = likes.find(likedUser=>likedUser.user===user.email)
-if(existing){
-  setIsLiked(true)
-  return
-}
+      if(existing){
+        return
+      }
   axios.post('/like',like)
   .then(res=>{ 
     setUpdate(!update)
